@@ -22,15 +22,15 @@
   
     |カラム名|型|
     |:---:|:---:|
-    |Word|String|
-
+    |word|String|
+    |meaning|String|
+    
 - Model:Category
   - テーブル名：categories
 
     |カラム名|型|
     |:---:|:---:|
-    |word_id|Int|
-    |category_id|Int|
+    |category|Int|
 
 - Model:CategoryOfWord
   - テーブル名：category_of_words
@@ -38,3 +38,4 @@
     |カラム名|型|
     |:---:|:---:|
     |word_id|Int|
+    |category_id|Int|
