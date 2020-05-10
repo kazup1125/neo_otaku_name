@@ -39,8 +39,8 @@
     |:---:|:---:|
     |category|Int|
 
-- #### Model:CategoryOfWord
-  - テーブル名：category_of_words
+- #### Model:CategoriesAndWords
+  - テーブル名：categories_and_words
   - WordとCategoryの中間テーブル
   
     |カラム名|型|
