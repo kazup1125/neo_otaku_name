@@ -9,15 +9,19 @@
 - 一般用語からオタク用語を検索できます。　
   - 例：本当？→こマ？
   
-
 - Ruby version
   - 2.6.6
 
 - データベース
   - mysql
+  - 開発環境
+    - neo_otaku_word_development
   
-###テーブル
-- Model:Word
+### テーブル
+- #### Model:Word
+  - オタク用語テーブル
+  - オタク用語とその意味を保存する
+  - Categoryとは**多対多**の関係にある
   - テーブル名：words
   
     |カラム名|型|
@@ -25,15 +29,19 @@
     |word|String|
     |meaning|String|
     
-- Model:Category
+- #### Model:Category
+  - その名の通りカテゴリーを保存するテーブル
+  - 例：アイドル、１９９０年代、２０００年代、アニメなど
+  - Wordとは**多対多**の関係にある
   - テーブル名：categories
 
     |カラム名|型|
     |:---:|:---:|
     |category|Int|
 
-- Model:CategoryOfWord
+- #### Model:CategoryOfWord
   - テーブル名：category_of_words
+  - WordとCategoryの中間テーブル
   
     |カラム名|型|
     |:---:|:---:|
