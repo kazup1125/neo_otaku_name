@@ -18,11 +18,11 @@
     - neo_otaku_word_development
   
 ### テーブル
-- #### Model:Word
+- #### Model:OtakuWord
   - オタク用語テーブル
   - オタク用語とその意味を保存する
   - Categoryとは**多対多**の関係にある
-  - テーブル名：words
+  - テーブル名：otaku_words
   
     |カラム名|型|
     |:---:|:---:|
