@@ -10,21 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_011756) do
+ActiveRecord::Schema.define(version: 2020_05_10_013455) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "category_of_otaku_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "otaku_word_id", null: false
-    t.bigint "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_category_of_otaku_words_on_category_id"
-    t.index ["otaku_word_id"], name: "index_category_of_otaku_words_on_otaku_word_id"
   end
 
   create_table "otaku_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -34,6 +25,15 @@ ActiveRecord::Schema.define(version: 2020_05_10_011756) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "category_of_otaku_words", "categories"
-  add_foreign_key "category_of_otaku_words", "otaku_words"
+  create_table "relationship_between_categories_and_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "otaku_word_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_relationship_between_categories_and_words_on_category_id"
+    t.index ["otaku_word_id"], name: "index_relationship_between_categories_and_words_on_otaku_word_id"
+  end
+
+  add_foreign_key "relationship_between_categories_and_words", "categories"
+  add_foreign_key "relationship_between_categories_and_words", "otaku_words"
 end

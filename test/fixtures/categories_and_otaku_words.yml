@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  word: one
+  otaku_word: one
   category: one
 
 two:
-  word: two
+  otaku_word: two
   category: two

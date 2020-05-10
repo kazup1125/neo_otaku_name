@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CategoryOfOtakuWordTest < ActiveSupport::TestCase
+class CategoriesAndOtakuWordTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
