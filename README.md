@@ -37,7 +37,7 @@
 
     |カラム名|型|
     |:---:|:---:|
-    |category|Int|
+    |category|String|
 
 - #### Model:CategoriesAndWords
   - テーブル名：category_and_otaku_word_relationships
