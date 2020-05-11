@@ -39,11 +39,11 @@
     |:---:|:---:|
     |category|Int|
 
-- #### Model:CategoryOfWord
-  - テーブル名：category_of_words
-  - WordとCategoryの中間テーブル
+- #### Model:CategoriesAndWords
+  - テーブル名：category_and_otaku_word_relationships
+  - OtakuWordとCategoryの中間テーブル
   
     |カラム名|型|
     |:---:|:---:|
-    |word_id|Int|
+    |otaku_word_id|Int|
     |category_id|Int|

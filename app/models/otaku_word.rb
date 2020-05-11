@@ -1,0 +1,2 @@
+class OtakuWord < ApplicationRecord
+end
