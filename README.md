@@ -40,10 +40,10 @@
     |category|Int|
 
 - #### Model:CategoriesAndWords
-  - テーブル名：categories_and_words
-  - WordとCategoryの中間テーブル
+  - テーブル名：category_and_otaku_word_relationships
+  - OtakuWordとCategoryの中間テーブル
   
     |カラム名|型|
     |:---:|:---:|
-    |word_id|Int|
+    |otaku_word_id|Int|
     |category_id|Int|
