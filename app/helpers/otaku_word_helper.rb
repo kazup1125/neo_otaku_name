@@ -1,0 +1,2 @@
+module OtakuWordHelper
+end
