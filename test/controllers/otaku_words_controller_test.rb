@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class OtakuWordControllerTest < ActionDispatch::IntegrationTest
+class OtakuWordsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get otaku_word_index_url
+    get otaku_words_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get otaku_word_show_url
+    get otaku_words_show_url
     assert_response :success
   end
 
