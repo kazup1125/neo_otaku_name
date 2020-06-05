@@ -10,10 +10,14 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe "GET #show" do
+    before do
+      @category = Category.create(
+        category: 'String'
+        )
+    end
     it "returns http success" do
-      get :show
+      get :show, params: { id: @category.id }
       expect(response).to have_http_status(:success)
     end
   end
-
 end

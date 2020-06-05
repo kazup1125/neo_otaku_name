@@ -10,8 +10,14 @@ RSpec.describe OtakuWordsController, type: :controller do
   end
 
   describe "GET #show" do
+    before do
+      @otaku_word = OtakuWord.create(
+        word: 'String',
+        meaning: 'String'
+      )
+    end
     it "returns http success" do
-      get :show
+      get :show, params: { id: @otaku_word.id }
       expect(response).to have_http_status(:success)
     end
   end
