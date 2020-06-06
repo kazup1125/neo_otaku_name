@@ -47,3 +47,12 @@
     |:---:|:---:|
     |otaku_word_id|Int|
     |category_id|Int|
+
+### 管理者権限
+- 投稿
+- 削除
+- 編集
+
+gem rails_adminで管理画面を作成する。認証はDeviseを使う。
+
+**他のユーザーの権限は閲覧のみである。**
