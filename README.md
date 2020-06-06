@@ -39,8 +39,8 @@
     |:---:|:---:|
     |category|String|
 
-- #### Model:CategoriesAndWords
-  - テーブル名：category_and_otaku_word_relationships
+- #### Model:CategoryAndWord
+  - テーブル名：CategoryAndOtakuWordRelationship
   - OtakuWordとCategoryの中間テーブル
   
     |カラム名|型|
