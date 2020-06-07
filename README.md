@@ -53,6 +53,6 @@
 - 削除
 - 編集
 
-gem rails_adminで管理画面を作成する。認証はDeviseを使う。
+gem active_adminで管理画面を作成する。認証はDeviseを使う。
 
 **他のユーザーの権限は閲覧のみである。**
