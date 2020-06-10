@@ -37,7 +37,7 @@
 
     |カラム名|型|
     |:---:|:---:|
-    |category|String|
+    |name|String|
 
 - #### Model:CategoryAndWord
   - テーブル名：CategoryAndOtakuWordRelationship
