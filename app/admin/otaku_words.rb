@@ -39,5 +39,31 @@ ActiveAdmin.register OtakuWord do
     column :updated_at
     actions
   end
-  
+
+  ## 詳細画面
+  show do
+    attributes_table do
+      row 'ID' do
+        resource.id
+      end
+      row 'オタク用語' do
+        resource.word
+      end
+      row '意味' do
+        resource.meaning
+      end
+      row 'カテゴリ' do
+        ## TODO スペルミス categorys -> categories
+        resource.categorys.each do |category|
+          category.name
+        end
+      end
+      row '作成日' do
+        resource.created_at
+      end
+      row '最終更新日' do
+        resource.updated_at
+      end
+    end
+  end
 end
