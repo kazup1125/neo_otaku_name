@@ -5,14 +5,15 @@ ActiveAdmin.register Category do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :_destroy
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:category]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  permit_params :name, :description, :_destroy
+
+  ## 入力フォーム
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :description
+      f.actions
+    end
+  end
+
 end
