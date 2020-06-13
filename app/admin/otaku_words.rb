@@ -7,14 +7,8 @@ ActiveAdmin.register OtakuWord do
   #
   permit_params :word, :meaning,
                 category_and_otaku_word_relationships_attributes: [:id, :category_id, :_destroy]
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:word, :meaning]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  ## 入力フォーム
   form do |f|
     f.inputs do
       f.input :word
@@ -27,6 +21,23 @@ ActiveAdmin.register OtakuWord do
       end
       f.actions
     end
+  end
+
+  ## 一覧画面
+  index do
+    selectable_column
+    id_column
+    column :word
+    column :meaning
+    column :category_id do |word|
+      ## TODO スペルミス categorys -> categories
+      word.categorys.each do |category|
+        category.name
+      end
+    end
+    column :created_at
+    column :updated_at
+    actions
   end
   
 end
