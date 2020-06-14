@@ -1,2 +1,30 @@
-%h1 OtakuWords#show
-%p Find me in app/views/otaku_words/show.html.haml
+.row.justify-content-center
+  .col-lg-6
+    .text-center
+      %h1 NeoOtakuWord -ネオオタク用語-
+      %table.table.table-primary{ border: 2, bordercolor: '#333333' , cellpadding: 5, cellspacing: 0, style: 'table-layout: auto;', width: '50%' }
+        %tr
+          %td.font-weight-bold.table-dark No.
+          %td= @otaku_word.id
+        %tr
+          %td.font-weight-bold.table-dark オタク用語
+          %td= @otaku_word.word
+        %tr
+          %td.font-weight-bold.table-dark 意味
+          %td= @otaku_word.meaning
+        %tr
+          %td.font-weight-bold.table-dark 解説
+          %td= @otaku_word.description
+        %tr
+          %td.font-weight-bold.table-dark カテゴリー
+          %td
+            %ul
+              - @otaku_word.categories.each do |category|
+                %li= category.name
+        %tr
+          %td.font-weight-bold.table-dark 作成日
+          %td= @otaku_word.created_at
+        %tr
+          %td.font-weight-bold.table-dark 最終更新日
+          %td= @otaku_word.updated_at
+      = link_to '戻る', otaku_words_path, class: 'btn btn-outline-primary'
