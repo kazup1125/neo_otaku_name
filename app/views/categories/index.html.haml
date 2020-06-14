@@ -10,7 +10,7 @@
           %th 説明
       %tbody.table-success
         - @categories.each do |category|
-          %tr
+          %tr{ data: { href: category_path(category) } }
             %td= category.id
             %td= category.name
             %td= category.description
