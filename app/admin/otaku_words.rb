@@ -5,7 +5,7 @@ ActiveAdmin.register OtakuWord do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :word, :meaning,
+  permit_params :word, :meaning, :description,
                 category_and_otaku_word_relationships_attributes: [:id, :category_id, :_destroy]
 
   ## 入力フォーム
@@ -13,6 +13,7 @@ ActiveAdmin.register OtakuWord do
     f.inputs do
       f.input :word
       f.input :meaning
+      f.input :description
       f.has_many :category_and_otaku_word_relationships, allow_destroy: true do |r|
         r.input :category,
                 label: 'カテゴリー',
@@ -42,14 +43,17 @@ ActiveAdmin.register OtakuWord do
   ## 詳細画面
   show do
     attributes_table do
-      row 'ID' do
+      row :id do
         resource.id
       end
-      row 'オタク用語' do
+      row :word do
         resource.word
       end
-      row '意味' do
+      row :meaning do
         resource.meaning
+      end
+      row :description do
+        resource.description
       end
       row 'カテゴリ' do
         resource.categories.each do |category|
