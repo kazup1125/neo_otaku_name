@@ -1,16 +1,15 @@
 .row.justify-content-center
-  .col-lg-6
+  .col-6
     .text-center
-      %h1 NeoOtakuWord -ネオオタク用語-
-    %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
-      %thead.thead-dark
-        %tr
-          %th No.
-          %th カテゴリー名
-          %th 説明
-      %tbody.table-success
-        - @categories.each do |category|
-          %tr{ data: { href: category_path(category) } }
-            %td= category.id
-            %td= category.name
-            %td= category.description
+      %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
+        %thead.thead-dark
+          %tr
+            %th No.
+            %th カテゴリー名
+            %th 説明
+        %tbody.table-success
+          - @categories.each do |category|
+            %tr{ data: { href: category_path(category) } }
+              %td= category.id
+              %td= category.name
+              %td= category.description
