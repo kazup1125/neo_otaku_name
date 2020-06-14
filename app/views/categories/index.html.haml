@@ -1,2 +1,16 @@
-%h1 Categories#index
-%p Find me in app/views/categories/index.html.haml
+.row.justify-content-center
+  .col-lg-6
+    .text-center
+      %h1 NeoOtakuWord -ネオオタク用語-
+    %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
+      %thead.thead-dark
+        %tr
+          %th No.
+          %th カテゴリー名
+          %th 説明
+      %tbody.table-success
+        - @categories.each do |category|
+          %tr
+            %td= category.id
+            %td= category.name
+            %td= category.description
