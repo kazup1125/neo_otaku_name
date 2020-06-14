@@ -11,7 +11,7 @@
           %th カテゴリー
       %tbody.table-primary
         - @otaku_words.each do |otaku_word|
-          %tr
+          %tr{ data: { href: otaku_word_path(otaku_word) } }
             %td= otaku_word.id
             %td= otaku_word.word
             %td= otaku_word.meaning
