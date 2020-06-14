@@ -17,4 +17,4 @@
               %td
                 %ul
                   - otaku_word.categories.each do |category|
-                    %li= category.name
+                    %li{ class: category.categories_badge }= category.name
