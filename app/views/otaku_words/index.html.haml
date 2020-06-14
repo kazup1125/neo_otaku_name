@@ -1,2 +1,20 @@
-%h1 OtakuWords#index
-%p Find me in app/views/otaku_words/index.html.haml
+.row.justify-content-center
+  .col-lg-6
+    .text-center
+      %h1 NeoOtakuWord -ネオオタク用語-
+    %table.table.table-hover{ border: 2, bordercolor: '#333333', cellpadding: 5, cellspacing: 0, width: '100%' }
+      %thead.thead-light
+        %tr
+          %th オタク用語
+          %th 意味
+          %th カテゴリー
+      %tbody
+        - @otaku_words.each do |otaku_word|
+          %tr
+            %td= otaku_word.word
+            %td= otaku_word.meaning
+            %td
+              %ul
+                - otaku_word.categories.each do |category|
+                  %li= category.name
+
