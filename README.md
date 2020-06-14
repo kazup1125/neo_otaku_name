@@ -28,6 +28,11 @@
     |:---:|:---:|
     |word|String|
     |meaning|String|
+    |description|text|
+
+  - word : オタク用語
+  - meaning : オタク用語を標準語で端的に表したもの
+  - description : 解説。その用語が生まれた背景など。   
     
 - #### Model:Category
   - その名の通りカテゴリーを保存するテーブル
@@ -38,6 +43,10 @@
     |カラム名|型|
     |:---:|:---:|
     |name|String|
+    |description|text|
+  
+  - name : カテゴリーの名前
+  - description : カテゴリーの解説
 
 - #### Model:CategoryAndWord
   - テーブル名：CategoryAndOtakuWordRelationship
@@ -56,3 +65,8 @@
 gem active_adminで管理画面を作成する。認証はDeviseを使う。
 
 **他のユーザーの権限は閲覧のみである。**
+
+### 検索機能
+**ransackを使う**
+オタク用語・意味のどちらでも検索できる
+ラジオボタンで選択させたい
