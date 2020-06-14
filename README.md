@@ -30,8 +30,8 @@
     |meaning|String|
     |description|text|
 
-  - word : オタク用語
-  - meaning : オタク用語を標準語で端的に表したもの
+  - word : オタク語
+  - meaning : 標準語
   - description : 解説。その用語が生まれた背景など。   
     
 - #### Model:Category
