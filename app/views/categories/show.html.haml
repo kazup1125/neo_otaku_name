@@ -1,2 +1,22 @@
-%h1 Categories#show
-%p Find me in app/views/categories/show.html.haml
+.row.justify-content-center
+  .col-lg-6
+    .text-center
+      %h1 NeoOtakuWord -ネオオタク用語-
+      %table.table.table-success{ border: 2, bordercolor: '#333333' , cellpadding: 5, cellspacing: 0, style: 'table-layout: auto;', width: '50%' }
+        %tr
+          %td.font-weight-bold.table-dark No.
+          %td= @category.id
+        %tr
+          %td.font-weight-bold.table-dark カテゴリー名
+          %td= @category.name
+        %tr
+          %td.font-weight-bold.table-dark 解説
+          %td= @category.description
+        %tr
+          %td.font-weight-bold.table-dark 作成日
+          %td= @category.created_at
+        %tr
+          %td.font-weight-bold.table-dark 最終更新日
+          %td= @category.updated_at
+
+      = link_to '戻る', categories_path, class: 'btn btn-outline-primary '
