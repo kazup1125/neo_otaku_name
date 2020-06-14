@@ -30,8 +30,7 @@ ActiveAdmin.register OtakuWord do
     column :word
     column :meaning
     column :category_id do |word|
-      ## TODO スペルミス categorys -> categories
-      word.categorys.each do |category|
+      word.categories.each do |category|
         category.name
       end
     end
@@ -53,8 +52,7 @@ ActiveAdmin.register OtakuWord do
         resource.meaning
       end
       row 'カテゴリ' do
-        ## TODO スペルミス categorys -> categories
-        resource.categorys.each do |category|
+        resource.categories.each do |category|
           category.name
         end
       end
