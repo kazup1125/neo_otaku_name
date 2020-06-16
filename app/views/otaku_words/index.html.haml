@@ -1,20 +1,24 @@
 .row.justify-content-center
   .col-6
-    .text-center
-      %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
-        %thead.thead-dark
-          %tr
-            %th No.
-            %th オタク語
-            %th 標準語
-            %th カテゴリー
-        %tbody.table-primary
-          - @otaku_words.each do |otaku_word|
-            %tr{ data: { href: otaku_word_path(otaku_word) } }
-              %td= otaku_word.id
-              %td= otaku_word.word
-              %td= otaku_word.meaning
-              %td
-                %ul
-                  - otaku_word.categories.each do |category|
-                    %li{ class: category.categories_badge }= category.name
+    = search_form_for @q do |f|
+      = f.label :word_or_meaning_cont
+      = f.search_field :word_or_meaning_cont
+      = f.submit '検索'
+      .text-center
+        %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
+          %thead.thead-dark
+            %tr
+              %th No.
+              %th オタク語
+              %th 標準語
+              %th カテゴリー
+          %tbody.table-primary
+            - @otaku_words.each do |otaku_word|
+              %tr{ data: { href: otaku_word_path(otaku_word) } }
+                %td= otaku_word.id
+                %td= otaku_word.word
+                %td= otaku_word.meaning
+                %td
+                  %ul
+                    - otaku_word.categories.each do |category|
+                      %li{ class: category.categories_badge }= category.name
