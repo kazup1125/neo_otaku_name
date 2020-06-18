@@ -1,22 +1,8 @@
 .row.justify-content-center
   .col-6
     .text-center
-      = search_form_for @q do |f|
-        .row.justify-content-center
-          = f.label :word_or_meaning_cont, 'オタク用語&標準語から検索'
-          = f.search_field :word_or_meaning_cont
-          = f.submit '検索'
-        .row.justify-content-center
-          = f.label :word_cont, 'オタク用語から検索'
-          = f.search_field :word_cont
-          = f.submit '検索'
-        .row.justify-content-center
-          = f.label :meaning_cont, '標準語から検索'
-          = f.search_field :meaning_cont
-          = f.submit '検索'
-        .row.justify-content-center
-          = f.label :categories_id_eq, 'カテゴリー'
-          = f.collection_select :categories_id_eq, @categories, :id, :name, include_blank: '指定なし'
+      .col-12
+        = render 'search_form', q: @q
       %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
         %thead.thead-dark
           %tr
