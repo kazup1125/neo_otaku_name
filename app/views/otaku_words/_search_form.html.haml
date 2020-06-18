@@ -1,16 +1,23 @@
 = search_form_for (q) do |f|
-  .row.justify-content-center
-    = f.label :word_or_meaning_cont, 'オタク用語&標準語から検索'
-    = f.search_field :word_or_meaning_cont
-    = f.submit '検索'
-  .row.justify-content-center
-    = f.label :word_cont, 'オタク用語から検索'
-    = f.search_field :word_cont
-    = f.submit '検索'
-  .row.justify-content-center
-    = f.label :meaning_cont, '標準語から検索'
-    = f.search_field :meaning_cont
-    = f.submit '検索'
-  .row.justify-content-center
-    = f.label :categories_id_eq, 'カテゴリー'
-    = f.collection_select :categories_id_eq, @categories, :id, :name, include_blank: '指定なし'
+  .card.mb-3
+    .card-header.bg-dark
+      .text-white
+        検索フォーム
+    .card-body
+      .d-md-flex
+        .form-group.mr-md-2
+          = f.label :categories_id_eq, 'カテゴリー', class: 'text-sm mr-md-2'
+          = f.collection_select :categories_id_eq, @categories, :id, :name, include_blank: '指定なし', class: 'form-control form-control-sm'
+      .d-md-flex
+        .form-group.mr-md-2
+          = f.label :word_or_meaning_cont, 'オタク用語&標準語から検索', class: 'text-sm mr-md-2'
+          = f.search_field :word_or_meaning_cont, class: 'form-control form-control-sm'
+        .form-group.mr-md-2
+          = f.label :word_cont, 'オタク用語から検索', class: 'text-sm mr-md-2'
+          = f.search_field :word_cont, class: 'form-control form-control-sm'
+        .form-group.mr-md-2
+          = f.label :meaning_cont, '標準語から検索', class: 'text-sm mr-md-2'
+          = f.search_field :meaning_cont, class: 'form-control form-control-sm'
+    .card-footer
+      .text-right
+        = f.submit'検索', class: 'btn btn-primary btn-sm'
