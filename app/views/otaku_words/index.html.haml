@@ -14,6 +14,9 @@
           = f.label :meaning_cont, '標準語から検索'
           = f.search_field :meaning_cont
           = f.submit '検索'
+        .row.justify-content-center
+          = f.label :categories_id_eq, 'カテゴリー'
+          = f.collection_select :categories_id_eq, @categories, :id, :name, include_blank: '指定なし'
       %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
         %thead.thead-dark
           %tr

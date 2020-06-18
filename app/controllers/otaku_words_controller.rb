@@ -4,6 +4,7 @@ class OtakuWordsController < ApplicationController
   def index
     @q = OtakuWord.ransack(params[:q])
     @otaku_words = @q.result(distinct: true)
+    @categories = Category.all
   end
 
   def show
