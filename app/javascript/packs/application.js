@@ -8,6 +8,8 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("bootstrap");
+require("@fortawesome/fontawesome-free");
 import 'bootstrap'
 import '../src/application.scss'
 import '../custom/click_row'
