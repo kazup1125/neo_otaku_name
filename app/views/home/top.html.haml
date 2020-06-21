@@ -7,20 +7,23 @@
             .text-white
               検索フォーム
           .card-body
-            .d-md-flex
-              .form-group.mr-md-2
-                %label{ for: 'otaku'} オタク語から検索
-                %input#otaku.form-control
-              .form-group.mr-md-2
-                %label{ for: 'standard'} 標準語語から検索
-                %input#standard.form-control
-              .form-group.mr-md-2
-                %label{ for: 'category_select' } カテゴリー選択
-                %select#category_select.form-control
-                  %option カテゴリ１
-                  %option カテゴリ２
-                  %option カテゴリ３
+            .row
+              .col
+                .form-group.mr-md-2
+                  %label{ for: 'otaku'} オタク語から検索
+                  %input#otaku.form-control
+              .col
+                .form-group.mr-md-2
+                  %label{ for: 'standard'} 標準語から検索
+                  %input#standard.form-control
+              .col
+                .form-group.mr-md-2
+                  %label{ for: 'category_select' } カテゴリー選択
+                  %select#category_select.form-control
+                    %option カテゴリ１
+                    %option カテゴリ２
+                    %option カテゴリ３
           .card-footer
             .text-right
-              %button
+              .btn.btn-primary
                 検索
