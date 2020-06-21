@@ -8,15 +8,14 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+
+const jQuery = require("jquery")
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
+
 import 'bootstrap'
+import 'select2/dist/js/select2.full.js'
 import '@fortawesome/fontawesome-free/js/all'
 import '../src/application.scss'
 import '../custom/click_row'
-
-
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+import './bootstrap_custom'
