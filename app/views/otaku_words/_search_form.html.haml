@@ -7,7 +7,7 @@
       .d-md-flex
         .form-group.mr-md-2
           = f.label :categories_id_eq, 'カテゴリー', class: 'text-sm mr-md-2'
-          = f.collection_select :categories_id_eq, @categories, :id, :name, include_blank: '指定なし', class: 'form-control form-control-sm'
+          = f.collection_select :categories_id_eq, Category.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control form-control-sm' }
       .d-md-flex
         .form-group.mr-md-2
           = f.label :word_or_meaning_cont, 'オタク用語&標準語から検索', class: 'text-sm mr-md-2'
