@@ -2,7 +2,8 @@ class OtakuWordsController < ApplicationController
   before_action :set_otaku_word, only: :show
 
   def index
-    @otaku_words = OtakuWord.all
+    @q = OtakuWord.ransack(params[:q])
+    @otaku_words = @q.result(distinct: true)
   end
 
   def show
