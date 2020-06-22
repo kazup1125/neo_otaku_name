@@ -2,15 +2,17 @@
   .card.mb-3
     .card-header.bg-dark
       .form-inline
-        %button.btn.btn-tool{ area: { controls: 'searchForms', expanded: false },
-                              data: { target: '#searchForms', toggle:  'collapse' }, 
-                              type: 'button' }
-          %i.fas.fa-plus.text-white
-        .input-group
-          = f.search_field :word_or_meaning_cont, class: 'form-control form-control-sm', placeholder: '検索'
-          .input-group-append
-            %button.btn.btn-default.bg-primary.btn-sm{ type: 'submit' }
-              %i.fas.fa-search
+        .col-auto
+          %button.btn.btn-tool{ area: { controls: 'searchForms', expanded: false },
+                                data: { target: '#searchForms', toggle:  'collapse' },
+                                type: 'button' }
+            %i.fas.fa-plus.text-white
+        .col-auto
+          .input-group
+            = f.search_field :word_or_meaning_cont, class: 'form-control form-control-sm', placeholder: '検索'
+            .input-group-append
+              %button.btn.btn-default.bg-primary.btn-sm{ type: 'submit' }
+                %i.fas.fa-search
     #searchForms.collapse
       .card-body
         .form-row
