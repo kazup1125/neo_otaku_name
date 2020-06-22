@@ -2,13 +2,16 @@
   .card.mb-3
     .card-header.bg-dark
       .form-inline
-        .text-white
-          = f.label :word_or_meaning_cont, '検索', class: 'text-sm mr-md-2'
-        .input-group
-          = f.search_field :word_or_meaning_cont, class: 'form-control form-control-sm'
-          .input-group-append
-            %button.btn.btn-default.bg-primary.btn-sm{ type: 'submit' }
-              %i.fas.fa-search
+        .col-auto
+          .text-left
+            %button.btn.btn-tool{ area: { controls: 'searchForms' } }
+              %i.fas.fa-plus.text-white
+        .col-auto
+          .input-group
+            = f.search_field :word_or_meaning_cont, class: 'form-control form-control-sm', placeholder: '検索'
+            .input-group-append
+              %button.btn.btn-default.bg-primary.btn-sm{ type: 'submit' }
+                %i.fas.fa-search
     .card-body
       .form-row
         .col
