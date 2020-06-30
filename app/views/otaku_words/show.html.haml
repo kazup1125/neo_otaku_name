@@ -1,19 +1,19 @@
 .row.justify-content-center
-  .col-6
+  .col-sm-12.col-md-10.col-lg-8
     .text-center
-      %table.table.table-primary{ border: 2, bordercolor: '#333333' , cellpadding: 5, cellspacing: 0, style: 'table-layout: auto;', width: '50%' }
+      %table.table.table-primary{ border: 2, bordercolor: '#333333' , cellpadding: 5, cellspacing: 0, style: 'table-layout: fixed', width: '100%' }
         %tr
-          %td.font-weight-bold.table-dark No.
+          %td.font-weight-bold.table-dark{ style: 'width: 30%' } No.
           %td= @otaku_word.id
         %tr
           %td.font-weight-bold.table-dark オタク語
           %td= @otaku_word.word
         %tr
           %td.font-weight-bold.table-dark 標準語
-          %td= @otaku_word.meaning
+          %td{ style: "word-wrap:break-word;" }= @otaku_word.meaning
         %tr
           %td.font-weight-bold.table-dark 解説
-          %td= @otaku_word.description
+          %td{ style: "word-wrap:break-word;" }= @otaku_word.description
         %tr
           %td.font-weight-bold.table-dark カテゴリー
           %td
