@@ -16,15 +16,15 @@
     #searchForms.collapse
       .card-body
         .form-row
-          .col
+          .col-md-4.col-sm-12
             .form-group.mr-md-2
               = f.label :word_cont, 'オタク用語から検索', class: 'text-sm mr-md-2'
               = f.search_field :word_cont, class: 'form-control form-control-sm'
-          .col
+          .col-md-4.col-sm-12
             .form-group.mr-md-2
               = f.label :meaning_cont, '標準語から検索', class: 'text-sm mr-md-2'
               = f.search_field :meaning_cont, class: 'form-control form-control-sm'
-          .col
+          .col-md-4.col-sm-12
             .form-group.mr-md-2
               = f.label :categories_id_eq, 'カテゴリー', class: 'text-sm mr-md-2'
               = f.collection_select :categories_id_eq, Category.all, :id, :name, { include_blank: '指定なし' }, { class: 'form-control form-control-sm' }
