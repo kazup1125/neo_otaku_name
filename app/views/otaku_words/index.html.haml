@@ -6,10 +6,10 @@
       %table.table.table-hover{ border: 2, bordercolor: '#333333', width: '100%' }
         %thead.thead-dark
           %tr
-            %th No.
-            %th オタク語
-            %th 標準語
-            %th カテゴリー
+            %th{ style: 'width: 10%'} No.
+            %th{ style: 'width: 30%'} オタク語
+            %th{ style: 'width: 40%'} 標準語
+            %th{ style: 'width: 20%'} カテゴリー
         %tbody.table-primary
           - @otaku_words.each do |otaku_word|
             %tr{ data: { href: otaku_word_path(otaku_word) } }
