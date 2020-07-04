@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
   end
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", default: "", null: false, comment: "Eメール"
+    t.string "encrypted_password", default: "", null: false, comment: "パスワード"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -39,15 +39,15 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", comment: "カテゴリー名"
+    t.text "description", comment: "説明"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "description"
   end
 
   create_table "category_and_otaku_word_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "otaku_word_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "otaku_word_id", null: false, comment: "オタク用語"
+    t.bigint "category_id", null: false, comment: "カテゴリー"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_category_and_otaku_word_relationships_on_category_id"
@@ -55,11 +55,11 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
   end
 
   create_table "otaku_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "word"
-    t.string "meaning"
+    t.string "word", comment: "オタク用語"
+    t.string "meaning", comment: "意味"
+    t.text "description", comment: "説明"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "description"
   end
 
   add_foreign_key "category_and_otaku_word_relationships", "categories"
