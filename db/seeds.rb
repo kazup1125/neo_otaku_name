@@ -8,6 +8,7 @@
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 ## カテゴリー
+print 'Create Category...'
 category1 = Category.create!(name: '1990年代',
                             description: '1990年代に生まれた言葉。')
 category2 = Category.create!(name: '2000年代',
@@ -20,6 +21,7 @@ category5 = Category.create!(name: 'アイドル',
                                         description: '主にアイドルオタクの中で使われている言葉。')
 
 ## オタク用語
+print 'Create word...'
 word1 = OtakuWord.create!(word: 'キボンヌ',
                                     meaning: '希望する',
                                     description: '「キボンヌ」は「希望」と「イボンヌ」という名前を合わせた合成語です。「イボンヌ」とは、2000年のシドニーオリンピックに女子100mハードルの種目で出場した「金沢イボンヌ」選手のこと。母親が日本人、父親がジャマイカ系アメリカ人の女子選手で、この種目で彼女は準決勝8位という活躍を見せました。「イボンヌ」という名前は海外では特に珍しい名前ではありませんが、日本人にとってはインパクトのある名前でした。そのインパクトの強さからネット上でイボンヌ選手の名前を「キボンヌ」ともじり、2ちゃんねるへ投稿され、一気に広まった言葉です。ちなみにイボンヌ選手は現在アメリカの大学の陸上部コーチとして活躍されています。')
@@ -48,3 +50,5 @@ word4.categories << category4
 word4.categories << category5
 
 word5.categories << category3
+
+print 'done!'
