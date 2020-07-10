@@ -18,7 +18,7 @@ category3 = Category.create!(name: '2000年代',
 category4 = Category.create!(name: '2010年代',
                             description: '20100年代に生まれた言葉。')
 category5 = Category.create!(name: 'アイドル',
-                                        description: '主にアイドルオタクの中で使われている言葉。')
+                            description: '主にアイドルオタクの中で使われている言葉。')
 
 ## オタク用語
 print 'Create word...'
