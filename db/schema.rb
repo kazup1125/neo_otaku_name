@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_07_04_013917) do
 
-  create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false, comment: "Eメール"
     t.string "encrypted_password", default: "", null: false, comment: "パスワード"
     t.string "reset_password_token"
@@ -38,14 +41,14 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name", comment: "カテゴリー名"
     t.text "description", comment: "説明"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "category_and_otaku_word_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "category_and_otaku_word_relationships", force: :cascade do |t|
     t.bigint "otaku_word_id", null: false, comment: "オタク用語"
     t.bigint "category_id", null: false, comment: "カテゴリー"
     t.datetime "created_at", precision: 6, null: false
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_013917) do
     t.index ["otaku_word_id"], name: "index_category_and_otaku_word_relationships_on_otaku_word_id"
   end
 
-  create_table "otaku_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "otaku_words", force: :cascade do |t|
     t.string "word", comment: "オタク用語"
     t.string "meaning", comment: "意味"
     t.text "description", comment: "説明"
