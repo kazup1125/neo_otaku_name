@@ -25,12 +25,11 @@ class LineBotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
+          ## 送られてきたテキストメッセージ
           text = event.message['text']
-          if OtakuWord.pluck(:word).any?(text)
-            content = OtakuWord.find_by(word: text).meaning
-          else
-            content = '何言ってんの？？www'
-          end
+          ## テキストをここで標準語に変換し、contentに格納
+          content = converting(text)
+          ## contentを雛形に当てはめ、送信
           client.reply_message(event['replyToken'], messages_template(content))
         end
       end
@@ -40,10 +39,22 @@ class LineBotController < ApplicationController
 
   private
 
+  ## オタク用語→標準語に変換する。
+  def converting(text)
+    if OtakuWord.pluck(:word).any?(text)
+      OtakuWord.find_by(word: text).meaning
+    else
+      ## マッチする単語がなかった場合に返すテキスト
+      '何言ってんの？？www'
+    end
+  end
+
+  ## リプライメッセージ(JSON)の雛形
   def messages_template(content)
     {
       type: "text",
       text: "#{content}"
     }
   end
+  
 end
