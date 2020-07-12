@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'otaku_words#index'
+  post '/callback' => 'line_bot#callback'
 
   resources :otaku_words, only: [:index, :show]
   resources :categories, only: [:index, :show]
