@@ -1,6 +1,7 @@
 class LineBotController < ApplicationController
   require 'line/bot'
   protect_from_forgery :except => [:callback]
+  require_relative '../models/line_bot'
 
   def client
     @client ||= Line::Bot::Client.new { |config|
@@ -11,6 +12,7 @@ class LineBotController < ApplicationController
 
   def callback
     body = request.body.read
+    line_bot = LineBot.new
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
@@ -28,43 +30,12 @@ class LineBotController < ApplicationController
           ## 送られてきたテキストメッセージ
           text = event.message['text']
           ## テキストをここで標準語に変換し、contentに格納
-          content = converting_otaku(text)
+          content = line_bot.converting_otaku(text)
           ## contentを雛形に当てはめ、送信
-          client.reply_message(event['replyToken'], messages_template(content))
+          client.reply_message(event['replyToken'], line_bot.messages_template(content))
         end
       end
     end
     head :ok
   end
-
-  private
-
-  ## オタク用語→標準語に変換する。
-  def converting_otaku(text)
-    if OtakuWord.pluck(:word).any?(text)
-      OtakuWord.find_by(word: text).meaning
-    else
-      ## マッチする単語がなかった場合に返すテキスト
-      '該当のオタク用語が見つかりませんでした。'
-    end
-  end
-
-  ## 標準語→オタク用語に変換する。
-  def converting_standard(text)
-    if OtakuWord.pluck(:meaning).any?(text)
-      OtakuWord.find_by(meaning: text).word
-    else
-      ## マッチする単語がなかった場合に返すテキスト
-      '該当の標準語が見つかりませんでした'
-    end
-  end
-
-  ## リプライメッセージ(JSON)の雛形
-  def messages_template(content)
-    {
-      type: "text",
-      text: "#{content}"
-    }
-  end
-  
 end
