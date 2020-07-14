@@ -2,7 +2,7 @@ class LineBot
   include ActiveModel::Model
 
   ## オタク用語→標準語に変換する。
-  def converting_otaku(text)
+  def self.converting_otaku(text)
     if OtakuWord.pluck(:word).any?(text)
       OtakuWord.find_by(word: text).meaning
     else
@@ -12,7 +12,7 @@ class LineBot
   end
 
   ## 標準語→オタク用語に変換する。
-  def converting_standard(text)
+  def self.converting_standard(text)
     if OtakuWord.pluck(:meaning).any?(text)
       OtakuWord.find_by(meaning: text).word
     else
@@ -22,7 +22,7 @@ class LineBot
   end
 
   ## リプライメッセージ(JSON)の雛形
-  def messages_template(content)
+  def self.messages_template(content)
     {
       type: "text",
       text: "#{content}"

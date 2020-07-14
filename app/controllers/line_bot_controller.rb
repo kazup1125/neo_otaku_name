@@ -12,7 +12,6 @@ class LineBotController < ApplicationController
 
   def callback
     body = request.body.read
-    line_bot = LineBot.new
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
@@ -30,9 +29,9 @@ class LineBotController < ApplicationController
           ## 送られてきたテキストメッセージ
           text = event.message['text']
           ## テキストをここで標準語に変換し、contentに格納
-          content = line_bot.converting_otaku(text)
+          content = LineBot.converting_otaku(text)
           ## contentを雛形に当てはめ、送信
-          client.reply_message(event['replyToken'], line_bot.messages_template(content))
+          client.reply_message(event['replyToken'], LineBot.messages_template(content))
         end
       end
     end
