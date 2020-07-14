@@ -1,5 +1,6 @@
 {
   "name": "neo_otaku_word",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
