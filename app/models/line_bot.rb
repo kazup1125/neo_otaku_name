@@ -1,6 +1,9 @@
 class LineBot
   include ActiveModel::Model
 
+  SELECT_OTAKU = 0
+  SELECT_STANDARD = 1
+
   ## オタク用語→標準語に変換する。
   def self.converting_otaku(text)
     if OtakuWord.pluck(:word).any?(text)
@@ -21,6 +24,14 @@ class LineBot
     end
   end
 
+  def self.converting(text, select)
+    if select == SELECT_STANDARD
+      self.converting_standard(text)
+    else
+      self.converting_otaku(text)
+    end
+  end
+  
   ## リプライメッセージ(JSON)の雛形
   def self.text_only_message(content)
     {
