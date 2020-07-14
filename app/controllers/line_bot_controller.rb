@@ -28,7 +28,7 @@ class LineBotController < ApplicationController
           ## 送られてきたテキストメッセージ
           text = event.message['text']
           ## テキストをここで標準語に変換し、contentに格納
-          content = converting(text)
+          content = converting_otaku(text)
           ## contentを雛形に当てはめ、送信
           client.reply_message(event['replyToken'], messages_template(content))
         end
@@ -40,12 +40,22 @@ class LineBotController < ApplicationController
   private
 
   ## オタク用語→標準語に変換する。
-  def converting(text)
+  def converting_otaku(text)
     if OtakuWord.pluck(:word).any?(text)
       OtakuWord.find_by(word: text).meaning
     else
       ## マッチする単語がなかった場合に返すテキスト
-      '何言ってんの？？www'
+      '該当のオタク用語が見つかりませんでした。'
+    end
+  end
+
+  ## 標準語→オタク用語に変換する。
+  def converting_standard(text)
+    if OtakuWord.pluck(:meaning).any?(text)
+      OtakuWord.find_by(meaning: text).word
+    else
+      ## マッチする単語がなかった場合に返すテキスト
+      '該当の標準語が見つかりませんでした'
     end
   end
 
