@@ -25,13 +25,15 @@ class LineBotController < ApplicationController
       case event
       when Line::Bot::Event::Message
         case event.type
+        ## テキストが送られてきたときの挙動
         when Line::Bot::Event::MessageType::Text
-          ## 送られてきたテキストメッセージ
-          text = event.message['text']
-          ## テキストをここで標準語に変換し、contentに格納
-          content = LineBot.converting_otaku(text)
-          ## contentを雛形に当てはめ、送信
-          client.reply_message(event['replyToken'], LineBot.messages_template(content))
+          ## '変換'と送られてきたら、selection_templateを送る
+          client.reply_message(event['replyToken'], LineBot.selection_template) if event.message['text'].eql?('変換')
+          if event.message['text'].eql?('オタク用語から')
+            client.reply_message(event['replyToken'], LineBot.text_only_message('オタク用語を入力してください'))
+          elsif event.message['text'].eql?('標準語から')
+            client.reply_message(event['replyToken'], LineBot.text_only_message('標準語を入力してください'))
+          end
         end
       end
     end
