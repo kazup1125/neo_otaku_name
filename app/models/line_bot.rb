@@ -20,7 +20,7 @@ class LineBot
       OtakuWord.find_by(meaning: text).word
     else
       ## マッチする単語がなかった場合に返すテキスト
-      '該当の標準語が見つかりませんでした'
+      '該当の標準語が見つかりませんでした。'
     end
   end
 
