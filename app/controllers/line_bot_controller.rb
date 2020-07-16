@@ -36,13 +36,12 @@ class LineBotController < ApplicationController
         ## テキストが送られてきたときの挙動
         when Line::Bot::Event::MessageType::Text
           ## contentを雛形に当てはめ、送信
-          case received_text
-          when OtakuWord.pluck(:meaning).any?(received_text)
+          if OtakuWord.pluck(:meaning).include?(received_text)
             content = OtakuWord.find_by(meaning: received_text).word
-          when OtakuWord.pluck(:word).any?(received_text)
+          elsif OtakuWord.pluck(:word).include?(received_text)
             content = OtakuWord.find_by(word: received_text).meaning
           else
-            content = '該当の単語が見つかりませんでした。'
+            content = '該当の単語が見つかりませんでした'
           end
           client.reply_message(event['replyToken'], LineBot.text_only_message(content))
         end
