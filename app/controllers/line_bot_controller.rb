@@ -24,28 +24,26 @@ class LineBotController < ApplicationController
 
     ## ここでevents内にJSONオブジェクトが入る
     events = client.parse_events_from(body)
+
+    ## ここにLINEで送られてきたイベントを検出する
     events.each do |event|
+      ## 受信したテキスト
+      received_text = event.message['text']
+
       case event
       when Line::Bot::Event::Message
         case event.type
         ## テキストが送られてきたときの挙動
         when Line::Bot::Event::MessageType::Text
-          ## '変換'と送られてきたら、selection_templateを送る
-          client.reply_message(event['replyToken'], LineBot.selection_template) if event.message['text'].eql?('変換')
-          if event.message['text'].eql?('オタク用語から')
-            client.reply_message(event['replyToken'], LineBot.text_only_message('オタク用語を入力してください'))
-            ## ここでオタク用語のフラグを変数に入れる
-            selection = SELECT_OTAKU
-          elsif event.message['text'].eql?('標準語から')
-            client.reply_message(event['replyToken'], LineBot.text_only_message('標準語を入力してください'))
-            ## ここで標準語のフラグを変数に入れる
-            selection = SELECT_STANDARD
-          end
-          ## 送られてきたテキストメッセージ
-          text = event.message['text']
-          ## 標準語とオタク用語を判別するフラグを渡し、テキストを変換し、contentに格納
-          content = LineBot.converting(text, selection)
           ## contentを雛形に当てはめ、送信
+          case received_text
+          when OtakuWord.pluck(:meaning).any?(received_text)
+            content = OtakuWord.find_by(meaning: received_text).word
+          when OtakuWord.pluck(:word).any?(received_text)
+            content = OtakuWord.find_by(word: received_text).meaning
+          else
+            content = '該当の単語が見つかりませんでした。'
+          end
           client.reply_message(event['replyToken'], LineBot.text_only_message(content))
         end
       end
