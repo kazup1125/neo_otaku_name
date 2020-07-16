@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe LineBot, type: :model do
   describe 'convertingメソッド' do
-
     # factories/otaku_words.rb 内で定義したotaku_wordを生成
     before do
       create(:otaku_word)
@@ -45,6 +44,33 @@ RSpec.describe LineBot, type: :model do
       end
       it 'textには"こんにちは"が入っている' do
         expect(message[:text]).to eq 'こんにちは'
+      end
+    end
+  end
+
+  describe 'selection_templateメソッド' do
+    template = LineBot.selection_template
+
+    context 'selection_templateメソッドを呼び出した時' do
+      it 'typeはtemplateである' do
+        expect(template[:type]).to eq 'template'
+      end
+      it 'テンプレートのテキストは、"どちらから変換しますか？"' do
+        expect(template[:template][:text]).to eq 'どちらから変換しますか？'
+      end
+    end
+
+    context '選択肢の内容' do
+      choices = template[:template][:actions]
+      it 'labelの一つめは"オタク用語"と"標準語"' do
+        expect(choices.first[:label]).to eq 'オタク用語'
+        expect(choices.second[:label]).to eq '標準語'
+      end
+      it '"オタク用語"を選択すると送られるテキストは"オタク用語から"' do
+        expect(choices.first[:text]).to eq 'オタク用語から'
+      end
+      it '"標準語"を選択すると送られるテキストは"標準語から"' do
+        expect(choices.second[:text]).to eq '標準語から'
       end
     end
   end
