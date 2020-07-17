@@ -24,11 +24,13 @@ class LineBot
     end
   end
 
-  def self.converting(text, select)
-    if select == SELECT_STANDARD
-      self.converting_standard(text)
+  def self.converting(text)
+    if OtakuWord.pluck(:meaning).include?(text)
+      OtakuWord.find_by(meaning: text).word
+    elsif OtakuWord.pluck(:word).include?(text)
+      OtakuWord.find_by(word: text).meaning
     else
-      self.converting_otaku(text)
+      '該当の単語が見つかりませんでした。'
     end
   end
   

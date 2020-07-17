@@ -7,31 +7,18 @@ RSpec.describe LineBot, type: :model do
       create(:otaku_word)
     end
 
-    # オタク用語と標準語のフラグを用意
-    SELECT_OTAKU = 0
-    SELECT_STANDARD = 1
-
-    context 'オタク用語のフラグが渡ってきた場合' do
-      selection = SELECT_OTAKU
+    context '単語が送られてきた時' do
       it '該当するオタク用語があったので、その値を返す' do
         text = 'word_1'
-        expect(LineBot.converting(text, selection)).to eq 'meaning_1'
+        expect(LineBot.converting(text)).to eq 'meaning_1'
       end
-      it '該当するオタク用語がなかったので、"該当のオタク用語が見つかりませんでした。"と返す' do
-        text = 'no_word'
-        expect(LineBot.converting(text, selection)).to eq '該当のオタク用語が見つかりませんでした。'
-      end
-    end
-
-    context '標準語のフラグが渡ってきた場合' do
-      selection = SELECT_STANDARD
-      it '該当する標準語があったので、その値を返す' do
+      it '該当するオタク用語があったので、その値を返す' do
         text = 'meaning_1'
-        expect(LineBot.converting(text, selection)).to eq 'word_1'
+        expect(LineBot.converting(text)).to eq 'word_1'
       end
-      it '該当する標準語がなかったので、"該当の標準語が見つかりませんでした"と返す' do
-        text = 'no_word'
-        expect(LineBot.converting(text, selection)).to eq '該当の標準語が見つかりませんでした。'
+      it '該当する単語がなかったので、"該当のオタク用語が見つかりませんでした。"と返す' do
+        text = 'no_match'
+        expect(LineBot.converting(text)).to eq '該当の単語が見つかりませんでした。'
       end
     end
   end
