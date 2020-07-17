@@ -35,7 +35,7 @@ class LineBotController < ApplicationController
         case event.type
         ## テキストが送られてきたときの挙動
         when Line::Bot::Event::MessageType::Text
-          ## contentを雛形に当てはめ、送信
+          ## 送られてきた単語を変換し、送り返す
           content = LineBot.converting(received_text)
           client.reply_message(event['replyToken'], LineBot.text_only_message(content))
         end
