@@ -1,6 +1,6 @@
 class LineBot
   include ActiveModel::Model
-  
+
   ## オタク用語→標準語に変換する。
   def self.converting_otaku(text)
     if OtakuWord.pluck(:word).any?(text)
@@ -36,31 +36,6 @@ class LineBot
     {
       type: "text",
       text: "#{content}"
-    }
-  end
-
-  def self.selection_template
-    {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-        "type": "confirm",
-        "text": "どちらから変換しますか？",
-        "actions": [
-          {
-            "type": "message",
-            # Botから送られてきたメッセージに表示される文字列です。
-            "label": "オタク用語",
-            # ボタンを押した時にBotに送られる文字列です。
-            "text": "オタク用語から"
-          },
-          {
-            "type": "message",
-            "label": "標準語",
-            "text": "標準語から"
-          }
-        ]
-      }
     }
   end
 end
