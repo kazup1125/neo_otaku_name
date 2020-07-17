@@ -1,9 +1,6 @@
 class LineBot
   include ActiveModel::Model
-
-  SELECT_OTAKU = 0
-  SELECT_STANDARD = 1
-
+  
   ## オタク用語→標準語に変換する。
   def self.converting_otaku(text)
     if OtakuWord.pluck(:word).any?(text)
