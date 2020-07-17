@@ -1,6 +1,7 @@
 class LineBotController < ApplicationController
   require 'line/bot'
   protect_from_forgery :except => [:callback]
+  require_relative '../models/line_bot'
 
   def client
     @client ||= Line::Bot::Client.new { |config|
@@ -20,41 +21,22 @@ class LineBotController < ApplicationController
     ## ここでevents内にJSONオブジェクトが入る
     events = client.parse_events_from(body)
 
+    ## ここにLINEで送られてきたイベントを検出する
     events.each do |event|
+      ## 受信したテキスト
+      received_text = event.message['text']
+
       case event
       when Line::Bot::Event::Message
         case event.type
+        ## テキストが送られてきたときの挙動
         when Line::Bot::Event::MessageType::Text
-          ## 送られてきたテキストメッセージ
-          text = event.message['text']
-          ## テキストをここで標準語に変換し、contentに格納
-          content = converting(text)
-          ## contentを雛形に当てはめ、送信
-          client.reply_message(event['replyToken'], messages_template(content))
+          ## 送られてきた単語を変換し、送り返す
+          content = LineBot.converting(received_text)
+          client.reply_message(event['replyToken'], LineBot.text_only_message(content))
         end
       end
     end
     head :ok
   end
-
-  private
-
-  ## オタク用語→標準語に変換する。
-  def converting(text)
-    if OtakuWord.pluck(:word).any?(text)
-      OtakuWord.find_by(word: text).meaning
-    else
-      ## マッチする単語がなかった場合に返すテキスト
-      '何言ってんの？？www'
-    end
-  end
-
-  ## リプライメッセージ(JSON)の雛形
-  def messages_template(content)
-    {
-      type: "text",
-      text: "#{content}"
-    }
-  end
-  
 end
