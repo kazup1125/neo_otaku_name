@@ -3,10 +3,6 @@ class LineBotController < ApplicationController
   protect_from_forgery :except => [:callback]
   require_relative '../models/line_bot'
 
-  ## LineBotモデルで宣言した定数を呼び出し
-  SELECT_OTAKU = LineBot::SELECT_OTAKU
-  SELECT_STANDARD = LineBot::SELECT_STANDARD
-
   def client
     @client ||= Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
