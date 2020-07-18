@@ -25,4 +25,3 @@ words.each do |word_attr|
   word.save!
   print '.'
 end
-

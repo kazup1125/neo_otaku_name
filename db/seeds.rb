@@ -15,5 +15,4 @@ load(Rails.root.join('db/data/categories.rb'))
 print 'Create word'
 load(Rails.root.join('db/data/words.rb'))
 
-
 print 'done!'
