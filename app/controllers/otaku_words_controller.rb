@@ -3,7 +3,7 @@ class OtakuWordsController < ApplicationController
 
   def index
     @q = OtakuWord.ransack(params[:q])
-    @otaku_words = @q.result(distinct: true)
+    @otaku_words = @q.result(distinct: true).order(:created_at)
   end
 
   def show
