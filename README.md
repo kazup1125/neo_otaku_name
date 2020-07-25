@@ -1,7 +1,6 @@
-# README
+# README　ネオオタク用語辞典
 
-## ネオオタク用語辞典
-### アプリ概要
+## アプリ概要
 - オタク用語がたくさん載っています。
 - オタク用語を一覧で表示できます。
 - オタク用語の意味を検索できます　
@@ -17,8 +16,8 @@
   - 開発環境
     - neo_otaku_word_development
   
-### テーブル
-- #### Model:OtakuWord
+## テーブル
+- ### Model:OtakuWord
   - オタク用語テーブル
   - オタク用語とその意味を保存する
   - Categoryとは**多対多**の関係にある
@@ -34,7 +33,7 @@
   - meaning : 標準語
   - description : 解説。その用語が生まれた背景など。   
     
-- #### Model:Category
+- ### Model:Category
   - その名の通りカテゴリーを保存するテーブル
   - 例：アイドル、１９９０年代、２０００年代、アニメなど
   - Wordとは**多対多**の関係にある
@@ -48,7 +47,7 @@
   - name : カテゴリーの名前
   - description : カテゴリーの解説
 
-- #### Model:CategoryAndOtakuWordRelationship
+- ### Model:CategoryAndOtakuWordRelationship
   - テーブル名：category_and_otaku_word_relationships
   - OtakuWordとCategoryの中間テーブル
   
@@ -57,7 +56,7 @@
     |otaku_word_id|Int|
     |category_id|Int|
 
-### 管理者権限
+## 管理者権限
 - 投稿
 - 削除
 - 編集
@@ -66,22 +65,23 @@ gem active_adminで管理画面を作成する。認証はDeviseを使う。
 
 **他のユーザーの権限は閲覧のみである。**
 
-### 検索機能
+## 検索機能
 **ransackを使う**
 オタク用語・意味のどちらでも検索できる
 ラジオボタンで選択させたい
 
-### LINE Bot ネオオタク用語辞典
+## LINE Bot ネオオタク用語辞典
+
+**ID**
+@722iibij
+
 - Heroku
 - LINE Messaging API
 
 上記二つを使用し、Botを作成しました。
 
-#### ボット情報
-@722iibij
-
-Botにはカテゴリの概念がなく、ただ変換ができるだけです。
+このBotにはカテゴリの概念がなく、ただ変換ができるだけです。
 
 例：
-送信「希望する」　→　受信「キボンヌ」
-送信「ぽまいら」　→　受信「お前ら」
+- 送信「希望する」　→　受信「キボンヌ」
+- 送信「ぽまいら」　→　受信「お前ら」
