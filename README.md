@@ -13,7 +13,7 @@
   - 2.6.6
 
 - データベース
-  - mysql
+  - postgresql
   - 開発環境
     - neo_otaku_word_development
   
@@ -48,8 +48,8 @@
   - name : カテゴリーの名前
   - description : カテゴリーの解説
 
-- #### Model:CategoryAndWord
-  - テーブル名：CategoryAndOtakuWordRelationship
+- #### Model:CategoryAndOtakuWordRelationship
+  - テーブル名：category_and_otaku_word_relationships
   - OtakuWordとCategoryの中間テーブル
   
     |カラム名|型|
@@ -70,3 +70,18 @@ gem active_adminで管理画面を作成する。認証はDeviseを使う。
 **ransackを使う**
 オタク用語・意味のどちらでも検索できる
 ラジオボタンで選択させたい
+
+### LINE Bot ネオオタク用語辞典
+- Heroku
+- LINE Messaging API
+
+上記二つを使用し、Botを作成しました。
+
+#### ボット情報
+@722iibij
+
+Botにはカテゴリの概念がなく、ただ変換ができるだけです。
+
+例：
+送信「希望する」　→　受信「キボンヌ」
+送信「ぽまいら」　→　受信「お前ら」
