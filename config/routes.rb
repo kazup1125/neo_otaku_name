@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root 'otaku_words#index'
   post '/callback' => 'line_bot#callback'
 
-  resources :otaku_words, only: [:index, :show]
+  namespace :api, {format: 'json'} do
+    namespace :v1 do
+      resources :otaku_words, only: [:index, :show]
+    end
+  end
   resources :categories, only: [:index, :show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :otaku_words, only: [:index, :show]
 end
