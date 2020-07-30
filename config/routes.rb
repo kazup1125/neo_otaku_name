@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get 'home/top'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'otaku_words#index'
+  root 'home#top'
   post '/callback' => 'line_bot#callback'
 
   namespace :api, {format: 'json'} do
