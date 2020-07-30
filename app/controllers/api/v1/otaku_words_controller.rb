@@ -7,12 +7,12 @@ class Api::V1::OtakuWordsController < ApiController
   end
 
   def index
-    @q = OtakuWord.ransack(params[:q])
-    @otaku_words = @q.result(distinct: true).order(:created_at)
+    otaku_words = OtakuWord.all
+    render json: otaku_words
   end
 
   def show
-    @otaku_word = OtakuWord.find(params[:id])
+    render json: @otaku_word
   end
 
   private
