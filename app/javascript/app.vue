@@ -11,15 +11,12 @@
     </div>
       <br><br>
     <div class="row justify-content-center">
-      <h3>変換結果</h3>
-      <br><br>
+      <h4 class="text-primary">{{result.standard}}</h4>
     </div>
     <div class="row justify-content-center">
-      <h4 class="text-primary">{{standard}}</h4>
+      <p class="text-primary">{{result.description}}</p>
     </div>
-    <div class="row justify-content-center">
-      <p class="text-primary">{{description}}</p>
-    </div>
+    <br><br>
     <div class="row justify-content-center">
       <button type="button" class="btn btn-warning" @click="clearDisplay">クリア</button>
     </div>
@@ -32,8 +29,10 @@
     data: function () {
       return {
         inputWord: '',
-        standard: '',
-        description: '',
+        result: {
+          standard: '',
+          description: '',
+        },
         otakuWords: []
       }
     },
@@ -48,12 +47,13 @@
     methods: {
       convertIntoStandardWord(){
         // TODO 検索機能
-        this.standard = this.otakuWords[0].meaning
-        this.description = this.otakuWords[0].description
+        const searchResult = this.otakuWords[0]
+        this.result.standard = searchResult.meaning
+        this.result.description = searchResult.description
       },
       clearDisplay(){
-        this.standard = ''
-        this.description = ''
+        this.result.standard = ''
+        this.result.description = ''
       }
     }
   }
