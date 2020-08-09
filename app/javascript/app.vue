@@ -46,8 +46,9 @@
     },
     methods: {
       convertIntoStandardWord(){
-        // TODO 検索機能
-        const searchResult = this.otakuWords[0]
+        const searchResult = this.otakuWords.find((otakuWord) => {
+          return (otakuWord.word === this.inputWord);
+        });
         this.result.standard = searchResult.meaning
         this.result.description = searchResult.description
       },
