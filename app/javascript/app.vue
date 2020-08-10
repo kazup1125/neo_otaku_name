@@ -1,8 +1,10 @@
 <template>
   <div id="app" class="container">
+    <br><br><br><br><br><br><br><br>
     <div class="row justify-content-center">
-      <h3>オタク用語→標準語に変換する</h3>
+      <h1>オタク用語を標準語に変換する</h1>
     </div>
+    <br>
     <div class="row justify-content-center">
       <div class="col-6">
         <input id="word"
@@ -13,7 +15,7 @@
       </div>
       <button type="button"
               class="btn btn-primary"
-              v-bind:disabled="inputWord===''"
+              v-bind:disabled="inputWord === ''"
               @click="convertIntoStandardWord">変換
       </button>
     </div>
