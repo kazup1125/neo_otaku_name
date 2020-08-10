@@ -26,7 +26,10 @@
     </div>
     <br><br>
     <div class="row justify-content-center">
-      <button type="button" class="btn btn-warning" @click="clearDisplay">クリア</button>
+      <button type="button"
+              class="btn btn-warning"
+              @click="clearText">クリア
+      </button>
     </div>
   </div>
 </template>
@@ -68,7 +71,7 @@
           this.result.description = '';
         }
       },
-      clearDisplay(){
+      clearText(){
         this.result.standard = ''
         this.result.description = ''
       }
