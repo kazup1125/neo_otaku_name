@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <br><br><br><br><br><br><br><br>
     <div class="row justify-content-center">
-      <h1>オタク用語を標準語に変換する</h1>
+      <h2>オタク用語を標準語に変換する</h2>
     </div>
     <br>
     <div class="row justify-content-center">
