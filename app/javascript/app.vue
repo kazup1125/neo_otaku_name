@@ -5,9 +5,17 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-6">
-        <input id="word" type="text" v-model="inputWord" class="form-control" placeholder="オタク用語を入力してください">
+        <input id="word"
+               type="text"
+               v-model="inputWord"
+               class="form-control"
+               placeholder="オタク用語を入力してください">
       </div>
-      <button type="button" class="btn btn-primary" @click="convertIntoStandardWord">変換</button>
+      <button type="button"
+              class="btn btn-primary"
+              v-bind:disabled="inputWord===''"
+              @click="convertIntoStandardWord">変換
+      </button>
     </div>
       <br><br>
     <div class="row justify-content-center">
@@ -41,16 +49,24 @@
       .get('/api/v1/otaku_words.json')
       .then(response => {
         this.otakuWords = response.data
-        console.log(response.data)
       });
     },
     methods: {
       convertIntoStandardWord(){
-        const searchResult = this.otakuWords.find((otakuWord) => {
-          return (otakuWord.word === this.inputWord);
-        });
-        this.result.standard = searchResult.meaning
-        this.result.description = searchResult.description
+        // 入力した単語がオタク用語一覧に含まれているか判別
+        const isExists = this.otakuWords.some((otakuWord) => otakuWord.word === this.inputWord);
+        if (isExists){
+          // trueの時は、入力した単語とマッチする単語の意味(meaning)をresultに渡す
+          const searchResult = this.otakuWords.find((otakuWord) => {
+            return (otakuWord.word === this.inputWord);
+          });
+          this.result.standard = searchResult.meaning;
+          this.result.description = searchResult.description;
+        }else {
+          // 存在しなかった場合は、resultに文字列を直打ちで入れる
+          this.result.standard = '見つかりませんでした';
+          this.result.description = '';
+        }
       },
       clearDisplay(){
         this.result.standard = ''
