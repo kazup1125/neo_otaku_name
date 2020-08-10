@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'home/top'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'otaku_words#index'
+  root 'home#top'
   post '/callback' => 'line_bot#callback'
 
-  resources :otaku_words, only: [:index, :show]
+  namespace :api, {format: 'json'} do
+    namespace :v1 do
+      resources :otaku_words, only: [:index, :show]
+    end
+  end
   resources :categories, only: [:index, :show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :otaku_words, only: [:index, :show]
 end
