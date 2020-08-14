@@ -7,7 +7,7 @@ class Api::V1::OtakuWordsController < ApiController
   end
 
   def index
-    otaku_words = OtakuWord.all
+    otaku_words = OtakuWord.select(:id, :word, :meaning, :description)
     render json: otaku_words
   end
 
