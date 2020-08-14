@@ -7,11 +7,12 @@
     <br>
     <div class="row justify-content-center">
       <div class="col-6">
-        <input id="word"
-               type="text"
-               v-model="inputWord"
-               class="form-control"
-               placeholder="オタク用語を入力してください">
+        <select v-model="inputWord" class="form-control">
+          <option disabled value="">選択してください</option>
+          <option v-for="otakuWord in otakuWords" v-bind:value="otakuWord.word" v-bind:key="otakuWord.id">
+            {{ otakuWord.word }}
+          </option>
+        </select>
       </div>
       <button type="button"
               class="btn btn-primary"
