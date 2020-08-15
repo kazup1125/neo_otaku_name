@@ -17,10 +17,10 @@
     </div>
       <br><br>
     <div class="row justify-content-center">
-      <h4 class="text-primary">{{result.standard}}</h4>
+      <h4 class="text-primary">{{ result.standard }}</h4>
     </div>
     <div class="row justify-content-center">
-      <p class="text-primary">{{result.description}}</p>
+      <p class="text-primary">{{ result.description }}</p>
     </div>
     <br><br>
     <div class="row justify-content-center">
