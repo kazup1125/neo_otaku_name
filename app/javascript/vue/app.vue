@@ -7,18 +7,13 @@
     <br>
     <div class="row justify-content-center">
       <div class="col-6">
-        <select v-model="inputWord" class="form-control">
+        <select v-model="inputWord" class="form-control" @change="convertIntoStandardWord">
           <option disabled value="">選択してください</option>
           <option v-for="otakuWord in otakuWords" v-bind:value="otakuWord.word" v-bind:key="otakuWord.id">
             {{ otakuWord.word }}
           </option>
         </select>
       </div>
-      <button type="button"
-              class="btn btn-primary"
-              v-bind:disabled="inputWord === ''"
-              @click="convertIntoStandardWord">変換
-      </button>
     </div>
       <br><br>
     <div class="row justify-content-center">
