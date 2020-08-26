@@ -16,7 +16,8 @@ words = [
   { base: { word: 'ナマポ', meaning: '生活保護', description: '生活保護を略した"生保”の訓読み。'}, relation: [the_2000s] },
   { base: { word: 'メシウマ', meaning: '他人の不幸で飯がうまい', description: ''}, relation: [the_2000s] },
   { base: { word: 'ようつべ', meaning: 'YouTube', description: 'YouTubeをローマ字読みしたもの。'}, relation: [the_2000s, from_mistake] },
-  { base: { word: 'マミる', meaning: '悲惨な最後を遂げること', description: '魔法少女まどかマギカのキャラクター、巴マミから。作中、敵に頭部を食いちぎられるという悲惨な死を遂げたことから生まれた。'}, relation: [anime, the_2010s]}
+  { base: { word: 'マミる', meaning: '悲惨な最後を遂げること', description: '魔法少女まどかマギカのキャラクター、巴マミから。作中、敵に頭部を食いちぎられるという悲惨な死を遂げたことから生まれた。'}, relation: [anime, the_2010s] },
+  { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。'}, relation: [from_mistake] }
 ]
 
 words.each do |word_attr|
