@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'kazup1125@me.com', password: 'snakemk22', password_confirmation: 'snakemk22')
+AdminUser.create!(email: 'admin@login.com', password: 'Qh7Zu8SP', password_confirmation: 'Qh7Zu8SP')
 
 ## カテゴリー
 print 'Create Category'
