@@ -15,6 +15,13 @@
   - postgresql
   - 開発環境
     - neo_otaku_word_development
+    
+## 管理者画面
+ログイン方法
+1. `/admin`にアクセス
+2. 
+- Email: `admin@login.com`
+- Password: `Qh7Zu8SP`
   
 ## テーブル
 - ### Model:OtakuWord
