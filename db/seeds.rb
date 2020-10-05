@@ -5,7 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@login.com', password: 'Qh7Zu8SP', password_confirmation: 'Qh7Zu8SP')
+admin_attributes = [
+  {
+    email: 'admin@login.com',
+    password: 'Qh7Zu8SP'
+  }
+]
+
+admin_attributes.each do |attribute|
+  AdminUser.find_or_create_by!(email: attribute[:email]) do |admin_user|
+    admin_user.assign_attributes(attribute)
+  end
+end
 
 ## カテゴリー
 print 'Create Category'
