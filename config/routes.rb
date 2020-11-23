@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'home/top'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -5,11 +7,11 @@ Rails.application.routes.draw do
   root 'home#top'
   post '/callback' => 'line_bot#callback'
 
-  namespace :api, {format: 'json'} do
+  namespace :api, { format: 'json' } do
     namespace :v1 do
-      resources :otaku_words, only: [:index, :show]
+      resources :otaku_words, only: %i[index show]
     end
   end
-  resources :categories, only: [:index, :show]
-  resources :otaku_words, only: [:index, :show]
+  resources :categories, only: %i[index show]
+  resources :otaku_words, only: %i[index show]
 end

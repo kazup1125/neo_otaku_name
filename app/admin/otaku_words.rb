@@ -1,12 +1,13 @@
-ActiveAdmin.register OtakuWord do
+# frozen_string_literal: true
 
+ActiveAdmin.register OtakuWord do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :word, :meaning, :description,
-                category_and_otaku_word_relationships_attributes: [:id, :category_id, :_destroy]
+                category_and_otaku_word_relationships_attributes: %i[id category_id _destroy]
 
   ## 入力フォーム
   form do |f|
@@ -31,9 +32,7 @@ ActiveAdmin.register OtakuWord do
     column :word
     column :meaning
     column :category_id do |word|
-      word.categories.each do |category|
-        category.name
-      end
+      word.categories.each(&:name)
     end
     column :created_at
     column :updated_at
@@ -56,9 +55,7 @@ ActiveAdmin.register OtakuWord do
         resource.description
       end
       row 'カテゴリ' do
-        resource.categories.each do |category|
-          category.name
-        end
+        resource.categories.each(&:name)
       end
       row '作成日' do
         resource.created_at
