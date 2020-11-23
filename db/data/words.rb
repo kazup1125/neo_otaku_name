@@ -19,7 +19,7 @@ words = [
   { base: { word: 'マミる', meaning: '悲惨な最後を遂げること', description: '魔法少女まどかマギカのキャラクター、巴マミから。作中、敵に頭部を食いちぎられるという悲惨な死を遂げたことから生まれた。' }, relation: [anime, the_2010s] },
   { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。'}, relation: [from_mistake] },
   { base: { word: 'ンゴ', meaning: '失敗やまずいことにつける語尾', description:  '元プロ野球選手の投手ドミンゴが、アウト1つも取れないまま降板した出来事に基づく。' }, relation: [the_2000s] },
-  { base: { word: 'マ？', meaning: 'マジ？', description: '「マジ？」の略。'}}
+  { base: { word: 'マ？', meaning: 'マジ？', description: '「マジ？」の略。' }, relation: [the_2010s] }
 ]
 
 words.each do |word_attr|
