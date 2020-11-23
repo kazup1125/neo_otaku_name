@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # categories
 the_1990s = Category.find_by(name: '1990年代')
 the_2000s = Category.find_by(name: '2000年代')
@@ -17,9 +19,10 @@ words = [
   { base: { word: 'メシウマ', meaning: '他人の不幸で飯がうまい', description: '' }, relation: [the_2000s] },
   { base: { word: 'ようつべ', meaning: 'YouTube', description: 'YouTubeをローマ字読みしたもの。' }, relation: [the_2000s, from_mistake] },
   { base: { word: 'マミる', meaning: '悲惨な最後を遂げること', description: '魔法少女まどかマギカのキャラクター、巴マミから。作中、敵に頭部を食いちぎられるという悲惨な死を遂げたことから生まれた。' }, relation: [anime, the_2010s] },
-  { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。'}, relation: [from_mistake] },
-  { base: { word: 'ンゴ', meaning: '失敗やまずいことにつける語尾', description:  '元プロ野球選手の投手ドミンゴが、アウト1つも取れないまま降板した出来事に基づく。' }, relation: [the_2000s] },
-  { base: { word: 'マ？', meaning: 'マジ？', description: '「マジ？」の略。' }, relation: [the_2010s] }
+  { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。' }, relation: [from_mistake] },
+  { base: { word: 'ンゴ', meaning: '失敗やまずいことにつける語尾', description: '元プロ野球選手の投手ドミンゴが、アウト1つも取れないまま降板した出来事に基づく。' }, relation: [the_2000s] },
+  { base: { word: 'マ？', meaning: 'マジ？', description: '「マジ？」の略。' }, relation: [abbreviate, the_2010s] },
+  { base: { word: 'ggrks', meaning: 'ググれカス', description: '「検索しろよ」という意味' }, relation: [the_2010s, abbreviate] }
 ]
 
 words.each do |word_attr|

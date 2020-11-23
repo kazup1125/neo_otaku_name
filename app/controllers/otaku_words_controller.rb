@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OtakuWordsController < ApplicationController
   before_action :set_otaku_word, only: :show
 

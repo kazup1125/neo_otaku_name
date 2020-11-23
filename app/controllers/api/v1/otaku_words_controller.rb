@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Api::V1::OtakuWordsController < ApiController
   before_action :set_otaku_word, only: :show
 
   # ActiveRecordのレコードが見つからなければ404 not foundを応答する
-  rescue_from ActiveRecord::RecordNotFound do |exception|
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
     render json: { error: '404 not found' }, status: 404
   end
 
@@ -21,4 +23,3 @@ class Api::V1::OtakuWordsController < ApiController
     @otaku_word = OtakuWord.find(params[:id])
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LineBot
   include ActiveModel::Model
 
@@ -30,12 +32,12 @@ class LineBot
       '該当の単語が見つかりませんでした。'
     end
   end
-  
+
   ## リプライメッセージ(JSON)の雛形
   def self.text_only_message(content)
     {
-      type: "text",
-      text: "#{content}"
+      type: 'text',
+      text: content.to_s
     }
   end
 end
