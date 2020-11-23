@@ -54,6 +54,7 @@ jobs:
 
     - name: DB setup
       run: |
+        yarn install --check-files
         bundle exec rails db:setup
 
     - name: test with rspec
