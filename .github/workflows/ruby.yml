@@ -12,6 +12,9 @@ on:
     branches: [ master ]
 
 jobs:
+  env:
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+    
   run_spec:
     name: Run spec
 
