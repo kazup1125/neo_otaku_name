@@ -17,6 +17,15 @@ jobs:
 
     # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
     runs-on: ubuntu-latest
+    services:
+      postgresql:
+        image: postgres:12.3
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: $POSTGRES_USER
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+          POSTGRES_DB: neo_otaku_word_test
 
     steps:
     - uses: actions/checkout@v2
@@ -28,10 +37,25 @@ jobs:
       with:
         ruby-version: 2.6.6
       env:
+        RAILS_ENV: test
+        POSTGRES_HOST: postgres
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        RAILS_DATABASE_USER: root
+        RAILS_DATABASE_PASSWORD: password
+
+    - name: bundler setup
+      run: |
+        gem install bundler
+        bundle install --path vendor/bundle
+    - name: install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+
+    - name: DB setup
+      run: |
+        bundle exec rails db:setup
 
     - name: test with rspec
       run: |
-        gem install bundler
-        bundle install --path vendor/bundle 
         bundle exec rspec
