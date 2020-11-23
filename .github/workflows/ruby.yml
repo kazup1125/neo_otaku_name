@@ -29,9 +29,9 @@ jobs:
         ruby-version: 2.6.6
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-        
+
     - name: test with rspec
-      run: 
+      run: |
         gem install bundler
         bundle install --path vendor/bundle 
         bundle exec rspec
