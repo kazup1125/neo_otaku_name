@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mysql:
+  postgresql:
     image: postgres:latest
     container_name: neo_otaku_word_postgres
     ports:
