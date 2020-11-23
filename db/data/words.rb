@@ -7,20 +7,21 @@ the_2010s = Category.find_by(name: '2010年代')
 idol = Category.find_by(name: 'アイドル')
 anime = Category.find_by(name: 'アニメ')
 from_mistake = Category.find_by(name: '誤変換、誤読、誤入力')
+abbreviate = Category.find_by(name: '略字・略語')
 
 words = [
   { base: { word: 'キボンヌ', meaning: '希望する', description: '「希望」と「イボンヌ」という名前を合わせた合成語。' }, relation: [the_1990s] },
   { base: { word: 'キター', meaning: '来た', description: 'ｷﾀ━━━━━━(ﾟ∀ﾟ)━━━━━━ !!!!!' }, relation: [the_1990s] },
   { base: { word: '推し', meaning: '一押し　イチオシ　お気に入り', description: '一推しのメンバーを意味する略語“推しメン”をさらに略したもの。' }, relation: [idol, the_2010s] },
-  { base: { word: 'エモい', meaning: 'emotional(エモーショナル)　感情的な', description: 'とりあえず「エモい」と言っておけば何とかなる。' }, relation: [the_2000s] },
-  { base: { word: 'うp', meaning: 'アップロード', description: 'アップロードのアップ(UP)、を日本語打ちした単語。' }, relation: [from_mistake] },
+  { base: { word: 'エモい', meaning: 'emotional(エモーショナル)　感情的な', description: 'とりあえず「エモい」と言っておけば何とかなる。' }, relation: [abbreviate, the_2000s] },
+  { base: { word: 'うp', meaning: 'アップロード', description: 'アップロードのアップ(UP)、を日本語打ちした単語。' }, relation: [abbreviate, from_mistake] },
   { base: { word: 'ぽまいら', meaning: 'お前ら', description: '' }, relation: [the_2000s] },
-  { base: { word: 'ナマポ', meaning: '生活保護', description: '生活保護を略した"生保”の訓読み。' }, relation: [the_2000s] },
-  { base: { word: 'メシウマ', meaning: '他人の不幸で飯がうまい', description: '' }, relation: [the_2000s] },
-  { base: { word: 'ようつべ', meaning: 'YouTube', description: 'YouTubeをローマ字読みしたもの。' }, relation: [the_2000s, from_mistake] },
+  { base: { word: 'ナマポ', meaning: '生活保護', description: '生活保護を略した"生保”の訓読み。' }, relation: [abbreviate, the_2000s] },
+  { base: { word: 'メシウマ', meaning: '他人の不幸で飯がうまい', description: '' }, relation: [abbreviate, the_2000s] },
+  { base: { word: 'ようつべ', meaning: 'YouTube', description: 'YouTubeをローマ字読みしたもの。' }, relation: [abbreviate, the_2000s, from_mistake] },
   { base: { word: 'マミる', meaning: '悲惨な最後を遂げること', description: '魔法少女まどかマギカのキャラクター、巴マミから。作中、敵に頭部を食いちぎられるという悲惨な死を遂げたことから生まれた。' }, relation: [anime, the_2010s] },
-  { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。' }, relation: [from_mistake] },
-  { base: { word: 'ンゴ', meaning: '失敗やまずいことにつける語尾', description: '元プロ野球選手の投手ドミンゴが、アウト1つも取れないまま降板した出来事に基づく。' }, relation: [the_2000s] },
+  { base: { word: 'あぴゅい', meaning: '暑い', description: 'とても暑いこと。'}, relation: [from_mistake] },
+  { base: { word: 'ンゴ', meaning: '失敗やまずいことにつける語尾', description:  '元プロ野球選手の投手ドミンゴが、アウト1つも取れないまま降板した出来事に基づく。' }, relation: [the_2000s] },
   { base: { word: 'マ？', meaning: 'マジ？', description: '「マジ？」の略。' }, relation: [abbreviate, the_2010s] },
   { base: { word: 'ggrks', meaning: 'ググれカス', description: '「検索しろよ」という意味' }, relation: [the_2010s, abbreviate] }
 ]
