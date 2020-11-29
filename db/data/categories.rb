@@ -9,6 +9,6 @@ categories = [
 ]
 
 categories.each do |category|
-  Category.create(category)
+  Category.find_or_create_by!(category)
   print '.'
 end

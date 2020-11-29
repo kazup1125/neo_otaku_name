@@ -23,7 +23,7 @@ words = [
 ]
 
 words.each do |word_attr|
-  word = OtakuWord.new(word_attr[:base])
+  word = OtakuWord.find_or_initialize_by(word_attr[:base])
   word.categories = word_attr[:relation]
   word.save!
   print '.'
