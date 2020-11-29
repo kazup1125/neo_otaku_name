@@ -59,6 +59,7 @@ jobs:
       run: |
         bundle exec rspec
 
-    - name: run rubocop
-      run: |
-        bundle exec rubocop
+#　　　ひとまずrubocopは実行しない
+#     - name: run rubocop
+#       run: |
+#         bundle exec rubocop
