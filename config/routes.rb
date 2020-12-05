@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       resources :otaku_words, only: [:index, :show]
     end
   end
-  resources :categories, only: [:index, :show]
-  resources :otaku_words, only: [:index, :show]
+  resources :categories
+  resources :otaku_words
 end

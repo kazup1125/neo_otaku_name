@@ -1,0 +1,10 @@
+= form_for @otaku_word do |f|
+  - if @otaku_word.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@otaku_word.errors.count, "error")} prohibited this otaku_word from being saved:"
+      %ul
+        - @otaku_word.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'
