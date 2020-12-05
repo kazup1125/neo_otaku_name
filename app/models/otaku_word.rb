@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OtakuWord < ApplicationRecord
   has_many :category_and_otaku_word_relationships
   has_many :categories, through: :category_and_otaku_word_relationships, dependent: :destroy

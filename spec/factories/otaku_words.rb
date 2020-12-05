@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :otaku_word do
-    word {'word_1'}
+    word { 'word_1' }
     meaning { 'meaning_1' }
   end
 end
