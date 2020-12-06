@@ -9,5 +9,8 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/navbar' unless controller_name == 'home'
+    .text-center
+      %p#notice= notice
+      %p#alert= alert
     = yield
     = render 'layouts/footer'

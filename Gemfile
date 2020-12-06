@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'ransack'
 gem 'haml-rails'
-gem 'activeadmin'
 gem 'devise'
 gem 'active_decorator'
 gem 'line-bot-api'
